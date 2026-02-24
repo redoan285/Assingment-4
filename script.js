@@ -54,7 +54,6 @@ function renderFiltered(list) {
     if (list.length === 0) {
         filteredSection.innerHTML = `
         <div class="bg-white p-16 rounded shadow text-center">
-            <img src="jobs.png" alt="No jobs" class="mx-auto mb-4 w-24 h-24 object-contain">
             <p class="text-xl font-semibold text-blue-900">No jobs Available</p>
             <p class="text-gray-500">Check back soon for new job opportunities</p>
         </div>
@@ -66,6 +65,7 @@ function renderFiltered(list) {
 }
 
 document.querySelector("main").addEventListener("click", function (e) {
+
     const card = e.target.closest(".card")
     if (!card) return
 
@@ -93,11 +93,14 @@ document.querySelector("main").addEventListener("click", function (e) {
         if (currentTab !== "all") toggleTab(currentTab)
     }
 
-    if (e.target.classList.contains("delete-btn")) {
+    /* ✅ FIXED DELETE PART */
+    const deleteBtn = e.target.closest(".delete-btn")
+    if (deleteBtn) {
         interviewList = interviewList.filter(c => c !== card)
         rejectedList = rejectedList.filter(c => c !== card)
         card.remove()
         updateDashboard()
         toggleTab(currentTab)
     }
+
 })
