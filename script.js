@@ -54,6 +54,11 @@ function renderFiltered(list) {
     if (list.length === 0) {
         filteredSection.innerHTML = `
         <div class="bg-white p-16 rounded shadow text-center">
+       <img 
+                src="jobs.png" 
+                alt="No Jobs"
+                class="w-30 h-38 mx-auto object-contain mb-6 opacity-90"
+            >
             <p class="text-xl font-semibold text-blue-900">No jobs Available</p>
             <p class="text-gray-500">Check back soon for new job opportunities</p>
         </div>
@@ -93,7 +98,7 @@ document.querySelector("main").addEventListener("click", function (e) {
         if (currentTab !== "all") toggleTab(currentTab)
     }
 
-    /* ✅ FIXED DELETE PART */
+    
     const deleteBtn = e.target.closest(".delete-btn")
     if (deleteBtn) {
         interviewList = interviewList.filter(c => c !== card)
